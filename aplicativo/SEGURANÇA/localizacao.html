@@ -1,0 +1,152 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Localização do Usuário</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css"> <!-- Importando o Font Awesome -->
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: Arial, sans-serif;
+            line-height: 1.6;
+        }
+
+        header {
+            background-color: #090101;
+            color: #fff;
+            padding: 20px;
+        }
+
+        header h1 {
+            margin: 0;
+        }
+
+        nav ul {
+            list-style-type: none;
+            margin: 0;
+            padding: 0;
+        }
+
+        nav ul li {
+            display: inline;
+            margin-right: 20px;
+        }
+
+        nav ul li a {
+            color: #fff;
+            text-decoration: none;
+        }
+
+        nav ul li a i {
+            margin-right: 5px; /* Espaço entre o ícone e o texto */
+        }
+
+        .content {
+            padding: 20px;
+        }
+
+        footer {
+            background-color: #080202;
+            color: #fff;
+            text-align: center;
+            padding: 10px 0;
+            position: fixed;
+            bottom: 0;
+            width: 100%;
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <center>
+            <img src="https://ceappedreira.org.br/wp-content/uploads/2022/08/Logo_ceap_offslogam_png-1.png" alt="CEAP" width="200" height="auto">
+            <h1>Mais+ Segurança</h1>
+
+        <nav>
+            <ul>
+                <li><a href="capa.html"><i class="fas fa-home"></i> Início</a></li>
+                <li><a href="index.html"><i class="fas fa-user-plus"></i> Cadastro</a></li>
+                <li><a href="ajuda.html"><i class="fas fa-question-circle"></i> Ajuda</a></li>
+                <li><a href="localizacao.html"><i class="fas fa-map-marker-alt"></i> Localização</a></li>
+                <li><a href="suporte.html"><i class="fas fa-headset"></i> Suporte</a></li>
+                <li><a href="autorizados.html"><i class="fas fa-headset"></i> Autorizados</a></li>
+            </ul>
+        </center>
+        </nav>
+    </header>
+
+    <div class="content">
+        <center>
+            <br>
+            <h1>Localização do Usuário</h1>
+            <button onclick="getLocation()">Obter Localização</button>
+            <p id="endereco"></p>
+            <div id="detalhes"></div>
+        </center>
+    </div>
+    
+    <footer>
+        <p>&copy; 2024 Site de Segurança. Todos os direitos reservados.</p>
+    </footer>
+
+    <script>
+        function getLocation() {
+            if (navigator.geolocation) {
+                navigator.geolocation.getCurrentPosition(showPosition, showError);
+            } else {
+                alert("Geolocalização não é suportada neste navegador.");
+            }
+        }
+
+        function showPosition(position) {
+            var latitude = position.coords.latitude;
+            var longitude = position.coords.longitude;
+
+            var url = `https://nominatim.openstreetmap.org/reverse?lat=${latitude}&lon=${longitude}&format=json`;
+            
+            fetch(url)
+                .then(response => response.json())
+                .then(data => {
+                    var address = data.display_name;
+                    var addressDetails = `
+                        País: ${data.address.country}<br>
+                        Estado: ${data.address.state}<br>
+                        Cidade: ${data.address.city}<br>
+                        CEP: ${data.address.postcode}<br>
+                        Rua: ${data.address.road}<br>
+                        Número: ${data.address.house_number || 'N/A'}<br>
+                    `;
+                    document.getElementById("endereco").innerHTML = address;
+                    document.getElementById("detalhes").innerHTML = addressDetails;
+                })
+                .catch(error => {
+                    console.error('Erro ao buscar o endereço:', error);
+                    document.getElementById("endereco").innerText = "Não foi possível obter o endereço.";
+                });
+        }
+
+        function showError(error) {
+            switch(error.code) {
+                case error.PERMISSION_DENIED:
+                    alert("Usuário negou a solicitação de geolocalização.");
+                    break;
+                case error.POSITION_UNAVAILABLE:
+                    alert("Localização indisponível.");
+                    break;
+                case error.TIMEOUT:
+                    alert("Tempo esgotado ao tentar obter a localização.");
+                    break;
+                case error.UNKNOWN_ERROR:
+                    alert("Erro desconhecido.");
+                    break;
+            }
+        }
+    </script>
+</body>
+</html>

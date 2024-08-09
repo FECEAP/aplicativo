@@ -1,0 +1,118 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Mais+ Segurança</title>
+    <link rel="manifest" href="manifest.json">
+    <link rel="stylesheet" href="styles.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css"> <!-- Importando o Font Awesome -->
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: Arial, sans-serif;
+            line-height: 1.6;
+        }
+
+        header {
+            background-color: #090101;
+            color: #fff;
+            padding: 20px;
+        }
+
+        header h1 {
+            margin: 10px 0;
+        }
+
+        nav ul {
+            list-style-type: none;
+            margin: 0;
+            padding: 0;
+        }
+
+        nav ul li {
+            display: inline;
+            margin-right: 20px;
+        }
+
+        nav ul li a {
+            color: #fff;
+            text-decoration: none;
+        }
+
+        nav ul li a i {
+            margin-right: 5px; /* Espaço entre o ícone e o texto */
+        }
+
+        .content {
+            padding: 20px;
+            text-align: center;
+        }
+
+        footer {
+            background-color: #080202;
+            color: #fff;
+            text-align: center;
+            padding: 10px 0;
+            position: fixed;
+            bottom: 0;
+            width: 100%;
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <center>
+            <img src="https://ceappedreira.org.br/wp-content/uploads/2022/08/Logo_ceap_offslogam_png-1.png" alt="Logo CEAP" width="200" height="auto">
+            <h1>Mais+ Segurança</h1>
+ 
+    
+        <nav>
+            <ul>
+                <li><a href="capa.html"><i class="fas fa-home"></i> Início</a></li>
+                <li><a href="index.html"><i class="fas fa-user-plus"></i> Cadastro</a></li>
+                <li><a href="ajuda.html"><i class="fas fa-question-circle"></i> Ajuda</a></li>
+                <li><a href="localizacao.html"><i class="fas fa-map-marker-alt"></i> Localização</a></li>
+                <li><a href="suporte.html"><i class="fas fa-headset"></i> Suporte</a></li>
+                <li><a href="autorizados.html"><i class="fas fa-headset"></i> Autorizados</a></li>
+            </ul>
+        </center>  
+        </nav>
+    </header>
+
+    <section class="content">
+        <br>
+        <p>Bem-vindo ao nosso site de segurança, primeiramente faça seu cadastro:</p>
+        <br>
+        <div id="cadastro">
+            <h2>Cadastro</h2>
+            <form id="cadastro-form" action="#" method="post">
+                <label for="nome">Nome:</label>
+                <input type="text" id="nome" name="nome" required><br><br>
+                <label for="email">Email:</label>
+                <input type="email" id="email" name="email" required><br><br>
+                <label for="senha">Senha:</label>
+                <input type="password" id="senha" name="senha" required><br><br>
+                <input type="submit" value="Cadastrar">
+            </form>
+        </div>
+        <br>
+    </section>
+    
+    <footer>
+        <p>&copy; 2024 Site de Segurança. Todos os direitos reservados.</p>
+    </footer>
+
+    <script>
+        document.getElementById('cadastro-form').addEventListener('submit', function(event) {
+            event.preventDefault(); // Impede o envio padrão do formulário
+            window.location.href = 'ajuda.html'; // Redireciona para a página de ajuda
+        });
+    </script>
+</body>
+</html>
