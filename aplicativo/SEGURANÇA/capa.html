@@ -1,0 +1,198 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Mais+ Segurança - Bem-vindo</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f4f4f4;
+            color: #333;
+            line-height: 1.6;
+        }
+
+        header {
+            background-color: #090101;
+            color: #fff;
+            padding: 40px;
+            text-align: center;
+            position: relative;
+        }
+
+        header img {
+            max-width: 180px;
+            height: auto;
+        }
+
+        nav ul {
+            list-style-type: none;
+            margin: 30px 0;
+            padding: 0;
+        }
+
+        nav ul li {
+            display: inline-block;
+            margin-right: 30px;
+        }
+
+        nav ul li a {
+            color: #fff;
+            text-decoration: none;
+            font-size: 18px;
+        }
+
+        nav ul li a i {
+            margin-right: 8px;
+        }
+
+        .content {
+            padding: 40px 20px;
+            text-align: center;
+            background-color: #fff;
+            border-radius: 10px;
+            box-shadow: 0 0 20px rgba(0, 0, 0, 0.1);
+            width: 90%;
+            max-width: 800px;
+            margin: 40px auto;
+        }
+
+        .content h2 {
+            color: #333;
+            margin-bottom: 25px;
+            font-size: 24px;
+        }
+
+        .content p {
+            font-size: 18px;
+            margin-bottom: 30px;
+        }
+
+        .content ul {
+            text-align: left;
+            margin: 0 auto;
+            display: inline-block;
+        }
+
+        .content ul li {
+            margin-bottom: 20px;
+            font-size: 16px;
+        }
+
+        footer {
+            background-color: #080202;
+            color: #fff;
+            text-align: center;
+            padding: 20px 0;
+            position: fixed;
+            bottom: 0;
+            width: 100%;
+        }
+
+        .feedback {
+            margin-top: 20px;
+            font-size: 14px;
+            color: green;
+        }
+
+        .btn-feedback {
+            background-color: #007bff;
+            color: white;
+            padding: 12px 24px;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            transition: background-color 0.3s ease;
+            margin-top: 30px;
+        }
+
+        .btn-feedback:hover {
+            background-color: #0056b3;
+        }
+
+        .space {
+            margin-bottom: 20px;
+        }
+
+        /* Estilo do botão SOS */
+        .sos-button {
+            position: absolute;
+            top: 20px;
+            right: 20px;
+            background-color: red;
+            color: white;
+            border-radius: 50%;
+            padding: 15px 20px;
+            font-size: 16px;
+            font-weight: bold;
+            border: none;
+            cursor: pointer;
+            transition: transform 0.3s ease;
+        }
+
+        .sos-button:hover {
+            transform: scale(1.1);
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <img src="https://ceappedreira.org.br/wp-content/uploads/2022/08/Logo_ceap_offslogam_png-1.png" alt="Logo CEAP">
+        <h1>Mais+ Segurança</h1>
+        <nav>
+            <ul>
+                <li><a href="capa.html"><i class="fas fa-home"></i> Início</a></li>
+                <li><a href="index.html"><i class="fas fa-user-plus"></i> Cadastro</a></li>
+                <li><a href="ajuda.html"><i class="fas fa-question-circle"></i> Ajuda</a></li>
+                <li><a href="localizacao.html"><i class="fas fa-map-marker-alt"></i> Localização</a></li>
+                <li><a href="suporte.html"><i class="fas fa-headset"></i> Suporte</a></li>
+                <li><a href="autorizados.html"><i class="fas fa-key"></i> Autorizados</a></li>
+            </ul>
+        </nav>
+        <!-- Botão SOS -->
+        <button class="sos-button" onclick="acionarSOS()">SOS</button>
+    </header>
+
+    <section class="content">
+        <h2>Bem-vindo ao Mais+ Segurança</h2>
+        <p>Nosso site oferece ferramentas e serviços essenciais para garantir a segurança e bem-estar. Abaixo estão as funcionalidades que você pode utilizar:</p>
+
+        <h3>Funcionalidades:</h3>
+        <ul>
+            <li><strong>Cadastro:</strong> Cadastre-se para acessar todas as funcionalidades. Clique em <a href="index.html">"Cadastro"</a> para começar.</li>
+            <li><strong>Ajuda:</strong>Acesse a seção de ajuda se precisar de ajuda de alguma autoridade.</li>
+            <li><strong>Localização:</strong> Localização e tenha mais controle sobre quem está nas proximidades.</li>
+            <li><strong>Suporte:</strong> Precisa de assistência? Nossa equipe está à disposição para atendê-lo no <a href="suporte.html">"Suporte"</a>.</li>
+            <li><strong>Autorizados:</strong> Verifique a lista de pessoas autorizadas a acessar determinadas áreas com segurança.</li>
+        </ul>
+
+        <h3>Feedback:</h3>
+        <p>Nos ajude a melhorar. Deixe seu feedback clicando no botão abaixo:</p>
+        <button class="btn-feedback" onclick="exibirFeedback()">Enviar Feedback</button>
+        <div id="feedbackMessage" class="feedback"></div>
+    </section>
+
+    <footer>
+        <p>&copy; 2024 Site de Segurança. Todos os direitos reservados.</p>
+    </footer>
+
+    <script>
+        function exibirFeedback() {
+            const feedbackMessage = document.getElementById('feedbackMessage');
+            feedbackMessage.innerText = "Obrigado pelo seu feedback! Sua opinião é importante para nós.";
+        }
+
+        // Função do botão SOS
+        function acionarSOS() {
+            alert("SOS acionado! Autoridades foram notificadas.");
+        }
+    </script>
+</body>
+</html>
